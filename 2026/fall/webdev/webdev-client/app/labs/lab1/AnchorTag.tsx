@@ -16,8 +16,12 @@ export default function AnchorTag() {
         My LinkedIn
       </a>
       <br />
-      <a href="https://www.github.com/pricefy-dotcom" id="wd-github" target="_blank" rel="noreferrer">
+      <a href="https://www.github.com/pricefy-dotcom" id="wd-your-github" target="_blank" rel="noreferrer">
         My GitHub
+      </a>
+      <br />
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table" id="wd-ai-link">
+        MDN: table element
       </a>
     </>
   );
