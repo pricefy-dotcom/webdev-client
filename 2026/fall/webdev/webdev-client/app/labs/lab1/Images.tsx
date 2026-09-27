@@ -20,13 +20,22 @@ export default function Images() {
         alt="Tesla Bot (Optimus) humanoid robot"
       />
       <br />
+      Another image from the internet:
+      <br />
+      <img
+        id="wd-ai-image"
+        width="200px"
+        alt="Earth from Apollo 17"
+        src="https://images-assets.nasa.gov/image/as17-148-22727/as17-148-22727~medium.jpg"
+      />
+      <br />
       My favorite image on this PC:
       <br />
       <img
-        id="wd-my-image"
+        id="wd-your-image"
         src="/images/th.jpg"
         height="200px"
-        alt="My current discord profile picture"
+        alt="My current discord profile picture of Nolan the Duck"
       />
     </div>
   );

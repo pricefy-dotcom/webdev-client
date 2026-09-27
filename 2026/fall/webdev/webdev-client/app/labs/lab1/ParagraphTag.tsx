@@ -29,12 +29,12 @@ export default function ParagraphTag() {
         give a default top and bottom margin, which creates the vertical gap
         between paragraphs.
       </p>
-      <p id="wd-p-my-1">
+      <p id="wd-p-your-1">
         I am from Williamsburg, Virginia and have lived in multiple states.
         These states include Virginia, Florida, Pennsylvania, New Hampshire, 
         and Massachusetts.
       </p>
-      <p id="wd-p-my-2">
+      <p id="wd-p-your-2">
         I hope to gain a deeper understanding of how to build web applications
         in this course. Especially with using AI as a tool to help and assist 
         its construction and not building it entirely.
