@@ -80,7 +80,7 @@ export default function Tables() {
           </tr>
         </tfoot>
       </table>
-      <table border={1} width="100%">
+      <table border={1} width="100%" id="wd-your-table">
         <thead>
             <tr>
                 <th>Class</th>

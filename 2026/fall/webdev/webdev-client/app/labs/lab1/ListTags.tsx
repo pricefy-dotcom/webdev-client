@@ -15,7 +15,7 @@ export default function ListTags() {
         <li>Serve and enjoy!</li>
       </ol>
       How to make Pizza Pasta:
-        <ol id="wd-pizza-pasta">
+        <ol id="wd-your-favorite-recipe">
             <li>Boil pasta.</li>
             <li>Drain pasta.</li>
             <li>Mix pasta with sauce.</li>
@@ -33,7 +33,7 @@ export default function ListTags() {
         <li>The Forever War</li>
       </ul>
       My REAL Favorite Books
-      <ul id="wd-my-books">
+      <ul id="wd-your-books">
         <li>Abaddons Gate</li>
         <li>Farseer Trilogy</li>
         <li>Sapien</li>

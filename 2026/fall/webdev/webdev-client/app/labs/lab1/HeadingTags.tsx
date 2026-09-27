@@ -29,9 +29,9 @@ export default function HeadingTags() {
         This is a placeholder sentence describing the next step.
       </div>
       <h4>Tyler Price</h4>
-      <div id="wd-my-heading">
+      <div id="wd-your-heading">
         I am a Masters student studying Computer Science at Northeastern University.
-        I am an avid gamer and reader, and <span id="wd-future-career-span">I 
+        I am an avid gamer and reader, and <span id="wd-your-span">I 
         enjoy conducting academic research in the field of AI in Education.</span>
       </div>
     </div>
