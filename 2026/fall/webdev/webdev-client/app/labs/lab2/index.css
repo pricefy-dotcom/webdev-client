@@ -1,0 +1,27 @@
+/* p {
+  background-color: green;
+  color: white;
+} */
+
+p#wd-id-selector-1 {
+  background-color: red;
+  color: white;
+}
+p#wd-id-selector-2 {
+  background-color: yellow;
+  color: black;
+}
+p#wd-id-selector-3 {
+    background: brown;
+    color: lightcyan;
+}
+
+h2 {
+  background-color: navy;
+  color: white;
+}
+
+h3 {
+    background-color: lightblue;
+    color: darkred;
+}
