@@ -39,6 +39,29 @@ export default function Lab2() {
           than the previous two paragraphs. It demonstrates how ID selectors
           can be used to apply unique styles to specific elements on a page.
         </p>
+        
+        <div id="wd-css-class-selectors">
+          <h3>Class selectors</h3>
+          <p className="wd-class-selector">
+            Instead of using IDs to refer to elements, you can use an
+            element&apos;s CLASS attribute
+          </p>
+          <h4 className="wd-class-selector">
+            This heading has the same style as paragraph above
+          </h4>
+
+          <div id="wd-your-class-selectors">
+            <h3>My class selectors</h3>
+            <p className="wd-your-class">
+              This paragraph uses a custom class selector to apply a gold
+              background and purple text.
+            </p>
+            <h4 className="wd-your-class">
+              This heading also uses the same custom class selector to
+              apply the same gold background and purple text as the paragraph above.
+            </h4>
+          </div>
+        </div>
       </div>
     </div>
   );
