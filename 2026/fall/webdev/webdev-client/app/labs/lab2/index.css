@@ -1,27 +1,39 @@
-/* p {
-  background-color: green;
-  color: white;
-} */
+/*p {
+    background-color: green;
+    color: white;
+}*/
 
 p#wd-id-selector-1 {
-  background-color: red;
-  color: white;
+    background-color: red;
+    color: white;
 }
+
 p#wd-id-selector-2 {
-  background-color: yellow;
-  color: black;
+    background-color: yellow;
+    color: black;
 }
+
+p#wd-ai-id-selector {
+    background-color: teal;
+    color: white;
+}
+
 p#wd-id-selector-3 {
-    background: brown;
-    color: lightcyan;
+    background-color: pink;
+    color: darkblue;
 }
 
 h2 {
-  background-color: navy;
-  color: white;
+    background-color: navy;
+    color: white;
 }
 
 h3 {
-    background-color: lightblue;
-    color: darkred;
+    background-color: brown;
+    color: yellow;
+}
+
+.wd-class-selector {
+    background-color: yellow;
+    color: blue;
 }
