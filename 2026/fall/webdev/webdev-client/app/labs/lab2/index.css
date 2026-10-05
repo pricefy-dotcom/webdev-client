@@ -67,3 +67,19 @@ h3 {
     background-color: gold;
     color: blue;
 }
+
+/* Cascade demo: #wd-ai-cascade (ID, specificity 1,0,0) should win over
+   .wd-ai-cascade (class, 0,1,0) and p (tag, 0,0,1), so the paragraph is red.
+   :where() adds zero specificity; it only keeps the tag rule from turning
+   every other paragraph on the page green. */
+:where(#wd-css-cascade) p {
+    background-color: green;
+}
+
+.wd-ai-cascade {
+    background-color: yellow;
+}
+
+#wd-ai-cascade {
+    background-color: red;
+}

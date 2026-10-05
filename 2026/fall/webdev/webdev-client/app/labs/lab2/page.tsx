@@ -109,6 +109,14 @@ export default function Lab2() {
 
       </div>
 
+      <div id="wd-css-cascade">
+        <h3>Cascade and specificity</h3>
+        <p id="wd-ai-cascade" className="wd-ai-cascade">
+          This sample paragraph matches a tag, a class, and an ID rule. The
+          ID selector is the most specific, so its red background wins.
+        </p>
+      </div>
+
     </div>
   );
 }
