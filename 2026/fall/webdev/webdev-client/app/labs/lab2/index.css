@@ -219,3 +219,48 @@ h2 {
 .wd-your-rounded-corners {
     border-radius: 20px 40px 60px 0px;
 }
+
+.wd-dimension-portrait {
+    width: 75px;
+    height: 100px;
+}
+
+.wd-dimension-landscape {
+    width: 100px;
+    height: 75px;
+}
+
+.wd-dimension-square {
+    width: 75px;
+    height: 75px;
+}
+
+.wd-dimension-tall-rect {
+    width: 50px;
+    height: 200px;
+}
+
+.wd-ai-dimension {
+    width: 120px;
+    height: 60px;
+    background-color: yellow;
+}
+
+.wd-display-inline {
+  display: inline;
+  width: 150px;
+  height: 50px;
+  padding: 5px;
+}
+.wd-display-inline-block {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  padding: 5px;
+}
+.wd-display-block {
+  display: block;
+  width: 150px;
+  height: 50px;
+  padding: 5px;
+}
