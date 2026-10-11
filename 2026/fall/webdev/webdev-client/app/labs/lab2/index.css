@@ -264,3 +264,31 @@ h2 {
   height: 50px;
   padding: 5px;
 }
+
+.wd-pos-relative-nudge-up-right {
+    position: relative;
+    bottom: 30px;
+    left: 30px;
+}
+
+.wd-pos-relative-nudge-down-right {
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+.wd-your-pos-relative-nudge-down-right {
+    position: relative;
+    top: 25px;
+    left: 40px;
+}
+
+.wd-ai-pos-relative-nudge {
+    position: relative;
+    top: 15px;
+    right: 25px;
+}
+
+.wd-pos-relative {
+    position: relative;
+}
