@@ -340,3 +340,18 @@ h2 {
     left: 0;
     bottom: 0;
 }
+
+.wd-zindex-bring-to-front {
+  z-index: 10;
+}
+
+.wd-your-zindex-bring-to-front {
+  z-index: 20;
+}
+
+.wd-ai-zindex-top {
+  z-index: 20;
+  position: absolute;
+  top: 80px;
+  left: 80px;
+}
