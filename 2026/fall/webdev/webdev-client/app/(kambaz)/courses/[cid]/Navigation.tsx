@@ -8,6 +8,7 @@ export default function CourseNavigation({ cid }: { cid: string }) {
   const home = `/courses/${cid}/home`;
   const modules = `/courses/${cid}/modules`;
   const assignments = `/courses/${cid}/assignments`;
+  const people = `/courses/${cid}/people/table`;
   return (
     <div id="wd-courses-navigation" className="wd list-group rounded-none text-lg">
       <Link
@@ -88,10 +89,10 @@ export default function CourseNavigation({ cid }: { cid: string }) {
         Grades
       </Link>
       <Link
-        href={modules}
-        id="wd-course-modules-link"
+        href={people}
+        id="wd-course-people-link"
         className={
-          pathname === modules
+          pathname === people
             ? "list-group-item active border-0"
             : "list-group-item border-0 text-red-600"
         }
