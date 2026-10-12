@@ -388,3 +388,22 @@ img.wd-float-right {
 .wd-grid-col-left-sidebar { width: 20%; float: left; }
 .wd-grid-col-main-content { width: 60%; float: left; }
 .wd-grid-col-right-sidebar { width: 20%; float: left; }
+
+.wd-flex-row-container {
+  display: flex;
+  flex-direction: row;
+}
+.wd-flex-row-container > div {
+  height: 100px;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.wd-flex-grow-1 {
+  flex-grow: 1;
+}
+
+.wd-width-110px {
+  width: 110px;
+  flex-shrink: 0;
+}
