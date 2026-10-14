@@ -13,6 +13,7 @@ export default function BooleanVariables() {
     let true5 = floatingPointNumber != 321.432;
     let false3 = numberVariable < 100;
     let false4 = stringVariable1 === stringVariable2;
+    // @ts-expect-error -- intentional: demonstrating == type coercion
     let test1 = string123 == numberVariable;
     const true6 = numberVariable !== 0;
     return (
