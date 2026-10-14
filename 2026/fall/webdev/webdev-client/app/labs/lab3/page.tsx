@@ -7,6 +7,7 @@ import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
 import ConditionalInline from "./ConditionalOutputInline";
 import NullUndefined from "./NullUndefined";
 import LegacyFunctions from "./LegacyFunctions";
+import ArrowFunction from "./ArrowFunctions";
 
 export default function Lab3() {
     return (
@@ -21,6 +22,7 @@ export default function Lab3() {
             <ConditionalInline />
             <NullUndefined />
             <LegacyFunctions />
+            <ArrowFunction />
         </div>
     );
 }
