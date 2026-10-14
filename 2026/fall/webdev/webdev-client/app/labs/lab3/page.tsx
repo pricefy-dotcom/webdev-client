@@ -3,6 +3,8 @@ import VariablesAndConstants from "./VariablesAndConstants";
 import VariableTypes from "./VariableTypes"
 import IfElse from "./IfElse";
 import TernaryOperator from "./TernaryOperator";
+import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
+import ConditionalInline from "./ConditionalOutputInline";
 
 export default function Lab3() {
     return (
@@ -13,6 +15,8 @@ export default function Lab3() {
             <BooleanVariables />
             <IfElse />
             <TernaryOperator />
+            <ConditionalOutputIfElse />
+            <ConditionalInline />
         </div>
     );
 }
