@@ -10,12 +10,16 @@ export default function VariableTypes() {
     let isString = typeof stringVariable;
     let isYourString = typeof yourString;
     let isBoolean = typeof booleanVariable;
+    let sampleCount = 42;
+    let sampleLabel = "Lab 3";
+    let isSampleCount = typeof sampleCount;
+    let isSampleLabel = typeof sampleLabel;
     return (
         <div id="wd-variable-types">
             <h4>Variables Types</h4>
             numberVariables = {numberVariable}
             <br />
-            yourNumber = {isYourNumber}
+            yourNumber = {yourNumber}
             <br />
             floatingPointNumber = {floatingPointNumber}
             <br />
@@ -34,6 +38,14 @@ export default function VariableTypes() {
             isYourString = {isYourString}
             <br />
             isBoolean = {isBoolean}
+            <br />
+            sampleCount = {sampleCount}
+            <br />
+            sampleLabel = {sampleLabel}
+            <br />
+            isSampleCount = {isSampleCount}
+            <br />
+            isSampleLabel = {isSampleLabel}
             <hr />
         </div>
     );
