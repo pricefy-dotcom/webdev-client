@@ -10,6 +10,7 @@ import LegacyFunctions from "./LegacyFunctions";
 import ArrowFunction from "./ArrowFunctions";
 import ImpliedReturn from "./ImpliedReturn";
 import TemplateLiterals from "./TemplateLiterals";
+import SimpleArrays from "./SimpleArrays";
 
 export default function Lab3() {
     return (
@@ -27,6 +28,7 @@ export default function Lab3() {
             <ArrowFunction />
             <ImpliedReturn />
             <TemplateLiterals />
+            <SimpleArrays />
         </div>
     );
 }
