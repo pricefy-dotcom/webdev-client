@@ -22,6 +22,7 @@ import IncludesSomeEvery from "./IncludesSomeEvery";
 import ReduceFunction from "./ReduceFunction";
 import JsonStringify from "./JsonStringify";
 import House from "./House";
+import Spreader from "./Spreader"
 
 export default function Lab3() {
     console.log("Hello World!")
@@ -52,6 +53,7 @@ export default function Lab3() {
             <ReduceFunction />
             <JsonStringify />
             <House />
+            <Spreader />
         </div>
     );
 }
