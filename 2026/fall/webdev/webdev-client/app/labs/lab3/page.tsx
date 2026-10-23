@@ -26,6 +26,7 @@ import Spreader from "./Spreader"
 import Destructing from "./Destructing";
 import FunctionDestructing from "./FunctionDestructing";
 import DestructingImports from "./DestructingImports";
+import OptionalChaining from "./OptionalChaining";
 
 export default function Lab3() {
     console.log("Hello World!")
@@ -60,6 +61,7 @@ export default function Lab3() {
             <Destructing />
             <FunctionDestructing />
             <DestructingImports />
+            <OptionalChaining />
         </div>
     );
 }
