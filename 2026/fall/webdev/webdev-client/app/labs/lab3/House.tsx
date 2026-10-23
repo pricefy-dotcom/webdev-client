@@ -15,6 +15,8 @@ export default function House() {
         garage: { cars: 2 },
     };
     console.log(house);
+    console.log(house.owners);
+    console.log(house.address.city);
     return (
         <div id="wd-house">
             <h4>House</h4>
@@ -22,6 +24,8 @@ export default function House() {
             {house.bedrooms}
             <h5>bathrooms</h5>
             {house.bathrooms}
+            <h5>owners</h5>
+            owners = {house.owners.join(", ")}
             <h5>year built</h5>
             {house.yearBuilt}
             <h5>garage cars</h5>
