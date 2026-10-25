@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import PathnameDemo from "./PathnameDemo";
 import SearchParamsDemo from "./SearchParamsDemo";
 import WindowDemo from "./WindowDemo";
@@ -10,10 +11,14 @@ export default function ClientApis() {
     <div id="wd-client-apis">
       <h2>Client-Only APIs</h2>
       <PathnameDemo />
-      <SearchParamsDemo />
+      <Suspense fallback={<p>Loading search params…</p>}>
+        <SearchParamsDemo />
+      </Suspense>
       <WindowDemo />
       <GeolocationDemo />
-      <MapEmbed />
+      <Suspense fallback={<p>Loading map…</p>}>
+        <MapEmbed />
+      </Suspense>
       <ClientIpDemo />
     </div>
   );
