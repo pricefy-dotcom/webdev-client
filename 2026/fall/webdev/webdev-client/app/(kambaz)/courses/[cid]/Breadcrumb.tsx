@@ -9,7 +9,10 @@ export default function Breadcrumb({
 }) {
   const pathname = usePathname() ?? "";
   const section = pathname.split("/").pop() ?? "";
-  const label = section.charAt(0).toUpperCase() + section.slice(1);
+  const label =
+    section === "table"
+      ? "People"
+      : section.charAt(0).toUpperCase() + section.slice(1);
   return (
     <span>
       {course?.name} &gt; {label}
