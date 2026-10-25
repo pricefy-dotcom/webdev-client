@@ -29,6 +29,7 @@ import DestructingImports from "./DestructingImports";
 import OptionalChaining from "./OptionalChaining";
 import Classes from "./Classes";
 import Styles from "./Styles";
+import ClientComponentDemo from "./ClientComponentDemo";
 
 export default function Lab3() {
     console.log("Hello World!")
@@ -66,6 +67,7 @@ export default function Lab3() {
             <OptionalChaining />
             <Classes />
             <Styles />
+            <ClientComponentDemo />
         </div>
     );
 }
