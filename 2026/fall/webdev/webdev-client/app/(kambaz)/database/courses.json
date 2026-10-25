@@ -25,7 +25,7 @@
   },
   {
     "_id": "RS103",
-    "name": "Spacecraft Design",
+    "name": "Spacecraft Engineering 101",
     "number": "RS4570",
     "startDate": "2023-01-10",
     "endDate": "2023-05-15",
@@ -34,5 +34,17 @@
     "credits": 4,
     "description": "This course covers the principles of spacecraft design, including structures, propulsion, thermal control, and power systems. Students apply systems engineering methods to mission design, orbital mechanics, and payload integration for current and future space missions.",
     "image": "/images/mongodb.jpg"
+  },
+  {
+    "_id": "RS104",
+    "name": "Organic Chemistry",
+    "number": "RS4580",
+    "startDate": "2023-01-10",
+    "endDate": "2023-05-15",
+    "term": "Spring 2023",
+    "department": "D123",
+    "credits": 4,
+    "description": "This course introduces the structure, properties, and reactions of carbon-based compounds. Students study functional groups, reaction mechanisms, and stereochemistry, with applications to propellant and materials chemistry.",
+    "image": "/images/reactjs.jpg"
   }
 ]
