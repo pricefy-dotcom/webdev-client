@@ -11,6 +11,7 @@ import ObjectStateVariable from "./ObjectStateVariable";
 import ArrayStateVariable from "./ArrayStateVariable";
 import ParentStateComponent from "./ParentStateComponent";
 import PropDrilling from "./PropDrilling";
+import UrlEncoding from "./UrlEncoding";
 
 export default function Lab4() {
     const sayHello = (text:string) => {
@@ -36,6 +37,7 @@ export default function Lab4() {
             <ArrayStateVariable />
             <ParentStateComponent />
             <PropDrilling />
+            <UrlEncoding />
         </div>
     );
 }
