@@ -8,6 +8,7 @@ import BooleanStateVariables from "./BooleanStateVariables";
 import StringStateVariables from "./StringStateVariables";
 import DateStateVariable from "./DateStateVariable";
 import ObjectStateVariable from "./ObjectStateVariable";
+import ArrayStateVariable from "./ArrayStateVariable";
 
 export default function Lab4() {
     const sayHello = (text:string) => {
@@ -30,6 +31,7 @@ export default function Lab4() {
             <StringStateVariables />
             <DateStateVariable />
             <ObjectStateVariable />
+            <ArrayStateVariable />
         </div>
     );
 }
