@@ -8,7 +8,7 @@ const multiply = (a: number, b: number) => {
 
 const add = (a: number, b: number) => {
     return a + b;
-}
+};
 
 export default function ArrowFunction() {
     const threeMinusOne = subtract(3, 1);
