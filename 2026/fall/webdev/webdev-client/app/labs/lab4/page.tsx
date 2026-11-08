@@ -6,6 +6,7 @@ import PassingDataOnEvent from "./PassingDataOnEvent";
 import PassingFunctions from "./PassingFunctions";
 import BooleanStateVariables from "./BooleanStateVariables";
 import StringStateVariables from "./StringStateVariables";
+import DateStateVariable from "./DateStateVariable";
 
 export default function Lab4() {
     const sayHello = (text:string) => {
@@ -26,6 +27,7 @@ export default function Lab4() {
             <Counter />
             <BooleanStateVariables />
             <StringStateVariables />
+            <DateStateVariable />
         </div>
     );
 }
