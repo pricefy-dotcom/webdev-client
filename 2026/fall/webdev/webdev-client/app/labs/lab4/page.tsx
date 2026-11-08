@@ -5,6 +5,7 @@ import PassingDataOnEvent from "./PassingDataOnEvent";
 import PassingFunctions from "./PassingFunctions";
 import Counter from "./Counter";
 import BooleanStateVariables from "./BooleanStateVariables";
+import StringStateVariables from "./StringStateVariables";
 
 export default function Lab4() {
   function sayHello(message: string) {
@@ -18,6 +19,7 @@ export default function Lab4() {
       <PassingFunctions message="Hello" theFunction={sayHello} />
       <Counter />
       <BooleanStateVariables /> 
+      <StringStateVariables />
     </div>
   );
 }
