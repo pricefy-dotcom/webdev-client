@@ -1,6 +1,7 @@
 "use client";
 
 import ClickEvent from "./ClickEvent";
+import Counter from "./Counter";
 import PassingDataOnEvent from "./PassingDataOnEvent";
 import PassingFunctions from "./PassingFunctions";
 
@@ -20,6 +21,7 @@ export default function Lab4() {
                 message="Hello from Lab 4"
                 userName="Tyler"
             />
+            <Counter />
         </div>
     );
 }
