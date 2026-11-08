@@ -4,6 +4,7 @@ import ClickEvent from "./ClickEvent";
 import Counter from "./Counter";
 import PassingDataOnEvent from "./PassingDataOnEvent";
 import PassingFunctions from "./PassingFunctions";
+import BooleanStateVariables from "./BooleanStateVariables";
 
 export default function Lab4() {
     const sayHello = (text:string) => {
@@ -22,6 +23,7 @@ export default function Lab4() {
                 userName="Tyler"
             />
             <Counter />
+            <BooleanStateVariables />
         </div>
     );
 }
