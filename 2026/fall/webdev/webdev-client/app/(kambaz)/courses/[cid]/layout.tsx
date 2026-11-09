@@ -24,12 +24,15 @@ export default function CoursesLayout({
       (e) => e.user === currentUser?._id && e.course === courseId,
     ),
   );
+  // Only signed-in users are limited to their enrolled courses;
+  // visitors who are not signed in can open every course.
+  const blocked = !!currentUser && !isEnrolled;
   useEffect(() => {
-    if (!isEnrolled) {
+    if (blocked) {
       router.push("/dashboard");
     }
-  }, [isEnrolled, router]);
-  if (!isEnrolled) return null;
+  }, [blocked, router]);
+  if (blocked) return null;
   return (
     <div id="wd-courses">
       <h2 className="text-2xl font-semibold text-red-600">
