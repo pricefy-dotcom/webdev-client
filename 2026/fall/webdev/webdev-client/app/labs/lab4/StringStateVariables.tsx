@@ -28,7 +28,7 @@ export default function StringStateVariables() {
                 className="w-full max-w-sm rounded border border-neutral-300 px-3 py-1.5"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                is="wd-last-name"
+                id="wd-last-name"
             />
             <hr />
         </div>

@@ -48,7 +48,7 @@ export default function DateStateVariable() {
                 className="rounded border border-neutral-300 px-3 py-1.5"
                 value={dateObjectToHtmlDateString(endDate)}
                 onChange={(e) => setEndDate(htmlDateStringToDate(e.target.value))}
-                id="wd-start-date"
+                id="wd-end-date"
             />
         </div>
     )
