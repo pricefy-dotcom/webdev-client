@@ -6,7 +6,7 @@ import {
   useCoursesStore,
   type Course,
 } from "../store/coursesStore";
-import * as db from "../database";
+import { useEnrollmentsStore } from "../store/enrollmentsStore";
 import { useAccountContext } from "../account/AccountContext";
 export default function Dashboard() {
   const courses = useCoursesStore((state) => state.courses);
@@ -14,17 +14,33 @@ export default function Dashboard() {
   const updateCourse = useCoursesStore((state) => state.updateCourse);
   const [course, setCourse] = useState<Course>(emptyCourse);
   const { currentUser } = useAccountContext();
-  const visibleCourses = currentUser
-    ? courses.filter((c) =>
-        db.enrollments.some(
-          (enrollment) =>
-            enrollment.user === currentUser._id && enrollment.course === c._id,
-        ),
-      )
-    : courses;
+  const enrollments = useEnrollmentsStore((state) => state.enrollments);
+  const enroll = useEnrollmentsStore((state) => state.enroll);
+  const unenroll = useEnrollmentsStore((state) => state.unenroll);
+  const [showAllCourses, setShowAllCourses] = useState(false);
+  const isEnrolled = (courseId: string) =>
+    !!currentUser &&
+    enrollments.some(
+      (enrollment) =>
+        enrollment.user === currentUser._id && enrollment.course === courseId,
+    );
+  const visibleCourses =
+    currentUser && !showAllCourses
+      ? courses.filter((c) => isEnrolled(c._id))
+      : courses;
   return (
     <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1>
+      <div className="flex items-center justify-between">
+        <h1 id="wd-dashboard-title">Dashboard</h1>
+        <button
+          type="button"
+          id="wd-enrollments-click"
+          className="rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white"
+          onClick={() => setShowAllCourses(!showAllCourses)}
+        >
+          Enrollments
+        </button>
+      </div>
       <hr />
       <h5 className="flex flex-wrap items-center justify-between gap-2">
         New Course
@@ -87,6 +103,15 @@ export default function Dashboard() {
             key={c._id}
             course={c}
             onEdit={() => setCourse(c)}
+            enrolled={isEnrolled(c._id)}
+            onToggleEnrollment={
+              currentUser
+                ? () =>
+                    isEnrolled(c._id)
+                      ? unenroll(currentUser._id, c._id)
+                      : enroll(currentUser._id, c._id)
+                : undefined
+            }
           />
         ))}
       </div>
