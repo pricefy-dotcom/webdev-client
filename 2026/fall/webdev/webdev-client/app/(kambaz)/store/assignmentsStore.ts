@@ -24,9 +24,12 @@ type AssignmentsStore = {
   addAssignment: (assignment: Omit<Assignment, "_id">) => void;
   deleteAssignment: (assignmentId: string) => void;
   updateAssignment: (assignment: Assignment) => void;
+  findAssignment: (assignmentId: string) => Assignment | undefined;
 };
-export const useAssignmentsStore = create<AssignmentsStore>((set) => ({
+export const useAssignmentsStore = create<AssignmentsStore>((set, get) => ({
   assignments: assignmentsJson as Assignment[],
+  findAssignment: (assignmentId) =>
+    get().assignments.find((a) => a._id === assignmentId),
   addAssignment: (assignment) =>
     set((state) => ({
       assignments: [

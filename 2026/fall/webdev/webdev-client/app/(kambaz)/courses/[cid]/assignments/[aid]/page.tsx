@@ -19,9 +19,8 @@ export default function AssignmentEditor() {
   const cid = typeof params.cid === "string" ? params.cid : "";
   const aid = typeof params.aid === "string" ? params.aid : "";
   const router = useRouter();
-  const existing = useAssignmentsStore((state) =>
-    state.assignments.find((a) => a.course === cid && a._id === aid),
-  );
+  const found = useAssignmentsStore((state) => state.findAssignment(aid));
+  const existing = found?.course === cid ? found : undefined;
   const addAssignment = useAssignmentsStore((state) => state.addAssignment);
   const updateAssignment = useAssignmentsStore(
     (state) => state.updateAssignment,
