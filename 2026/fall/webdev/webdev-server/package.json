@@ -1,0 +1,28 @@
+{
+  "name": "webdev-server",
+  "version": "1.0.0",
+  "description": "Node.js HTTP Web server for the Kambaz application",
+  "keywords": [
+    "Node",
+    "REST",
+    "Server",
+    "HTTP",
+    "Web",
+    "Development"
+  ],
+  "homepage": "https://github.com/pricefy-dotcom/web-server#readme",
+  "bugs": {
+    "url": "https://github.com/pricefy-dotcom/web-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pricefy-dotcom/web-server.git"
+  },
+  "license": "ISC",
+  "author": "Tyler Price",
+  "type": "commonjs",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
