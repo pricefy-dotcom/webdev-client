@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CourseCard from "./CourseCard";
 import {
   emptyCourse,
@@ -10,6 +10,7 @@ import { useEnrollmentsStore } from "../store/enrollmentsStore";
 import { useAccountContext } from "../account/AccountContext";
 export default function Dashboard() {
   const courses = useCoursesStore((state) => state.courses);
+  const loadCourses = useCoursesStore((state) => state.loadCourses);
   const addCourse = useCoursesStore((state) => state.addCourse);
   const updateCourse = useCoursesStore((state) => state.updateCourse);
   const [course, setCourse] = useState<Course>(emptyCourse);
@@ -24,10 +25,21 @@ export default function Dashboard() {
       (enrollment) =>
         enrollment.user === currentUser._id && enrollment.course === courseId,
     );
-  const visibleCourses =
-    currentUser && !showAllCourses
-      ? courses.filter((c) => isEnrolled(c._id))
-      : courses;
+  // 5.4.5.1: signed in -> the server returns only your enrolled courses.
+  // "Enrollments" toggle (or signed out) -> all courses.
+  const scope = currentUser && !showAllCourses ? "mine" : "all";
+  useEffect(() => {
+    loadCourses(scope);
+  }, [currentUser, scope, loadCourses]);
+  const visibleCourses = courses;
+  const toggleEnrollment = async (userId: string, courseId: string) => {
+    if (isEnrolled(courseId)) {
+      await unenroll(userId, courseId);
+    } else {
+      await enroll(userId, courseId);
+    }
+    await loadCourses(scope);
+  };
   return (
     <div id="wd-dashboard">
       <div className="flex items-center justify-between">
@@ -106,10 +118,7 @@ export default function Dashboard() {
             enrolled={isEnrolled(c._id)}
             onToggleEnrollment={
               currentUser
-                ? () =>
-                    isEnrolled(c._id)
-                      ? unenroll(currentUser._id, c._id)
-                      : enroll(currentUser._id, c._id)
+                ? () => toggleEnrollment(currentUser._id, c._id)
                 : undefined
             }
           />

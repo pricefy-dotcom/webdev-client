@@ -1,6 +1,6 @@
 "use client";
 import { create } from "zustand";
-import assignmentsJson from "../database/assignments.json";
+import * as client from "../courses/client";
 export type Assignment = {
   _id: string;
   title: string;
@@ -21,30 +21,43 @@ export const emptyAssignment: Omit<Assignment, "_id" | "course"> = {
 };
 type AssignmentsStore = {
   assignments: Assignment[];
-  addAssignment: (assignment: Omit<Assignment, "_id">) => void;
-  deleteAssignment: (assignmentId: string) => void;
-  updateAssignment: (assignment: Assignment) => void;
+  loadAssignments: (courseId: string) => Promise<void>;
+  addAssignment: (assignment: Omit<Assignment, "_id">) => Promise<void>;
+  deleteAssignment: (assignmentId: string) => Promise<void>;
+  updateAssignment: (assignment: Assignment) => Promise<void>;
   findAssignment: (assignmentId: string) => Assignment | undefined;
 };
 export const useAssignmentsStore = create<AssignmentsStore>((set, get) => ({
-  assignments: assignmentsJson as Assignment[],
+  assignments: [],
   findAssignment: (assignmentId) =>
     get().assignments.find((a) => a._id === assignmentId),
-  addAssignment: (assignment) =>
-    set((state) => ({
-      assignments: [
-        ...state.assignments,
-        { ...assignment, _id: crypto.randomUUID() },
-      ],
-    })),
-  deleteAssignment: (assignmentId) =>
+  // GET /api/courses/:courseId/assignments
+  loadAssignments: async (courseId) => {
+    const assignments = await client.findAssignmentsForCourse(courseId);
+    set({ assignments });
+  },
+  // POST /api/courses/:courseId/assignments
+  addAssignment: async (assignment) => {
+    const newAssignment = await client.createAssignmentForCourse(
+      assignment.course,
+      assignment,
+    );
+    set((state) => ({ assignments: [...state.assignments, newAssignment] }));
+  },
+  // DELETE /api/assignments/:assignmentId
+  deleteAssignment: async (assignmentId) => {
+    await client.deleteAssignment(assignmentId);
     set((state) => ({
       assignments: state.assignments.filter((a) => a._id !== assignmentId),
-    })),
-  updateAssignment: (assignment) =>
+    }));
+  },
+  // PUT /api/assignments/:assignmentId
+  updateAssignment: async (assignment) => {
+    const updated = await client.updateAssignment(assignment);
     set((state) => ({
       assignments: state.assignments.map((a) =>
-        a._id === assignment._id ? assignment : a,
+        a._id === assignment._id ? updated : a,
       ),
-    })),
+    }));
+  },
 }));

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import {
@@ -31,12 +31,23 @@ export default function AssignmentEditor() {
   const [assignment, setAssignment] = useState<Omit<Assignment, "_id">>(
     () => existing ?? { ...emptyAssignment, course: cid },
   );
+  // After a page refresh the store is empty: fetch this course's assignments,
+  // then fill the form once the one we're editing arrives
+  const loadAssignments = useAssignmentsStore((state) => state.loadAssignments);
+  useEffect(() => {
+    if (!found && cid) loadAssignments(cid);
+  }, [found, cid, loadAssignments]);
+  const existingId = existing?._id;
+  useEffect(() => {
+    if (existing) setAssignment(existing);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [existingId]);
   const listUrl = `/courses/${cid}/assignments`;
-  const save = () => {
+  const save = async () => {
     if (isNew) {
-      addAssignment(assignment);
+      await addAssignment(assignment);
     } else {
-      updateAssignment({ ...assignment, _id: existing._id });
+      await updateAssignment({ ...assignment, _id: existing._id });
     }
     router.push(listUrl);
   };
