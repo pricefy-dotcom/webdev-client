@@ -1,0 +1,36 @@
+import type { NextRequest } from "next/server";
+
+// e.g. /api/lab5/calculator?a=3&b=5&operation=add
+export async function GET(request: NextRequest) {
+  const params = request.nextUrl.searchParams;
+  const a = parseFloat(params.get("a") ?? "");
+  const b = parseFloat(params.get("b") ?? "");
+  const operation = params.get("operation");
+
+  if (Number.isNaN(a) || Number.isNaN(b)) {
+    return Response.json({ error: "Invalid numbers" }, { status: 400 });
+  }
+
+  let result: number;
+  switch (operation) {
+    case "add":
+      result = a + b;
+      break;
+    case "subtract":
+      result = a - b;
+      break;
+    case "multiply":
+      result = a * b;
+      break;
+    case "divide":
+      result = b === 0 ? NaN : a / b;
+      break;
+    default:
+      result = NaN;
+  }
+
+  if (Number.isNaN(result)) {
+    return Response.json({ error: "Invalid operation" }, { status: 400 });
+  }
+  return Response.json({ a, b, operation, result });
+}

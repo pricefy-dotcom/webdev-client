@@ -5,8 +5,16 @@ export default function Labs() {
     <div id="wd-labs">
       <h1>Labs</h1>
       <h2 id="wd-full-name">Tyler Price</h2>
-      <a href="https://github.com/pricefy-dotcom/webdev-client" id="wd-toc-github-link">
+      <a href="https://github.com/pricefy-dotcom/webdev-client" id="wd-github">
         Github
+      </a>
+      <br />
+      <a href="https://github.com/pricefy-dotcom/web-server" id="wd-github-node-server-repo">
+        Node Server Repo
+      </a>
+      <br />
+      <a href="https://kambaz-server-tprice.onrender.com" id="wd-render-root-url">
+        Root of the server on Render
       </a>
       <ul>
         <li>
