@@ -1,6 +1,7 @@
 import Environment from "./Environment";
 import PathParameters from "./PathParamaters";
 import QueryParameters from "./QueryParameters";
+import WorkingWithRemoteObjects from "./WorkingWithRemoteObjects";
 
 export default function Lab5() {
     return (
@@ -9,7 +10,8 @@ export default function Lab5() {
             <Environment />
             <PathParameters />
             <QueryParameters />
-            
+            <WorkingWithRemoteObjects />
+
         </div>
     );
 }
