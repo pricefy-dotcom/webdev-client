@@ -1,5 +1,4 @@
 "use client";
-import { useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { FaPlus, FaSearch } from "react-icons/fa";
@@ -21,11 +20,6 @@ function assignmentDetails(a: Assignment) {
 export default function Assignments() {
   const { cid } = useParams();
   const courseId = typeof cid === "string" ? cid : "";
-  const loadAssignments = useAssignmentsStore((state) => state.loadAssignments);
-  // 5.4.7: load this course's assignments from the server
-  useEffect(() => {
-    if (courseId) loadAssignments(courseId);
-  }, [courseId, loadAssignments]);
   const assignments = useAssignmentsStore((state) => state.assignments).filter(
     (assignment) => assignment.course === courseId,
   );

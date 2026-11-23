@@ -15,13 +15,7 @@ export default function CoursesLayout({
   const { cid } = useParams();
   const courseId = typeof cid === "string" ? cid : "";
   const courses = useCoursesStore((state) => state.courses);
-  const loadCourses = useCoursesStore((state) => state.loadCourses);
   const course = courses.find((c) => c._id === courseId);
-  // After a page refresh the store is empty, so fetch the courses again
-  useEffect(() => {
-    if (!course) loadCourses("all");
-  }, [course, loadCourses]);
-  const enrollmentsLoaded = useEnrollmentsStore((state) => state.loaded);
   const [showCourseNav, setShowCourseNav] = useState(true);
   const { currentUser } = useAccountContext();
   const router = useRouter();
@@ -32,8 +26,7 @@ export default function CoursesLayout({
   );
   // Only signed-in users are limited to their enrolled courses;
   // visitors who are not signed in can open every course.
-  // Wait until enrollments arrive from the server before deciding
-  const blocked = !!currentUser && enrollmentsLoaded && !isEnrolled;
+  const blocked = !!currentUser && !isEnrolled;
   useEffect(() => {
     if (blocked) {
       router.push("/dashboard");

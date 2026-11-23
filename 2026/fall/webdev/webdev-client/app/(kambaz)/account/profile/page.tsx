@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import * as client from "../client";
 import { useAccountContext, type User } from "../AccountContext";
 
 const fieldClass = "mb-2 w-full rounded border border-neutral-300 px-3 py-2";
@@ -19,14 +18,7 @@ export default function Profile() {
     }
     setProfile(currentUser);
   }, [currentUser, router]);
-  // 5.4.2.3: save changes on the server, then refresh the context
-  const updateProfile = async () => {
-    const updatedUser = await client.updateUser(profile);
-    setCurrentUser(updatedUser);
-  };
-  // 5.4.2.5: end the server session, then clear the context
-  const signout = async () => {
-    await client.signout();
+  const signout = () => {
     setCurrentUser(null);
     router.push("/account/signin");
   };
@@ -90,14 +82,6 @@ export default function Profile() {
         <option value="STUDENT">Student</option>
         <option value="TA">TA</option>
       </select>
-      <button
-        type="button"
-        onClick={updateProfile}
-        id="wd-update-profile-btn"
-        className="mb-2 block w-full rounded bg-blue-600 px-3 py-2 text-center text-white"
-      >
-        Update
-      </button>
       <button
         type="button"
         onClick={signout}
