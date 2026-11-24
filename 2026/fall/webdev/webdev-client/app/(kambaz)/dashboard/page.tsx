@@ -51,6 +51,10 @@ export default function Dashboard() {
       enroll(currentUser._id, newCourse._id);
     }
   };
+  const onUpdateCourse = async () => {
+    const updated = await client.updateCourse(course);
+    updateCourse(updated);
+  };
 
   return (
     <div id="wd-dashboard">
@@ -81,7 +85,7 @@ export default function Dashboard() {
             type="button"
             className="rounded bg-yellow-400 px-3 py-1.5 text-sm font-medium"
             id="wd-update-course-click"
-            onClick={() => updateCourse(course)}
+            onClick={onUpdateCourse}
           >
             Update
           </button>
