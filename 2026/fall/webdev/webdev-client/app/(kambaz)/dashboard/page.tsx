@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CourseCard from "./CourseCard";
 import {
   emptyCourse,
@@ -8,8 +8,10 @@ import {
 } from "../store/coursesStore";
 import { useEnrollmentsStore } from "../store/enrollmentsStore";
 import { useAccountContext } from "../account/AccountContext";
+import * as client from "../courses/client";
 export default function Dashboard() {
   const courses = useCoursesStore((state) => state.courses);
+  const setCourses = useCoursesStore((state) => state.setCourses);
   const addCourse = useCoursesStore((state) => state.addCourse);
   const updateCourse = useCoursesStore((state) => state.updateCourse);
   const [course, setCourse] = useState<Course>(emptyCourse);
@@ -24,10 +26,23 @@ export default function Dashboard() {
       (enrollment) =>
         enrollment.user === currentUser._id && enrollment.course === courseId,
     );
-  const visibleCourses =
-    currentUser && !showAllCourses
-      ? courses.filter((c) => isEnrolled(c._id))
-      : courses;
+
+  const loadCourses = async () => {
+    try {
+      const data =
+        currentUser && !showAllCourses
+          ? await client.findMyCourses()
+          : await client.fetchAllCourses();
+      setCourses(data);
+    } catch {
+      setCourses([]);
+    }
+  };
+  useEffect(() => {
+    loadCourses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUser, showAllCourses]);
+
   return (
     <div id="wd-dashboard">
       <div className="flex items-center justify-between">
@@ -92,13 +107,13 @@ export default function Dashboard() {
         id="wd-course-start-date"
       />
       <hr />
-      <h2 id="wd-dashboard-published">Published Courses ({visibleCourses.length})</h2>
+      <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2>
       <hr />
       <div
         id="wd-dashboard-courses"
         className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
       >
-        {visibleCourses.map((c) => (
+        {courses.map((c) => (
           <CourseCard
             key={c._id}
             course={c}

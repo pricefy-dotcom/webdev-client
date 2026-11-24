@@ -7,6 +7,7 @@ import Breadcrumb from "./Breadcrumb";
 import { useCoursesStore } from "../../store/coursesStore";
 import { useEnrollmentsStore } from "../../store/enrollmentsStore";
 import { useAccountContext } from "../../account/AccountContext";
+import * as client from "../client";
 export default function CoursesLayout({
   children,
 }: Readonly<{
@@ -15,7 +16,14 @@ export default function CoursesLayout({
   const { cid } = useParams();
   const courseId = typeof cid === "string" ? cid : "";
   const courses = useCoursesStore((state) => state.courses);
+  const setCourses = useCoursesStore((state) => state.setCourses);
   const course = courses.find((c) => c._id === courseId);
+  // After a refresh the store is empty, so fetch the courses again
+  useEffect(() => {
+    if (!course) {
+      client.fetchAllCourses().then(setCourses);
+    }
+  }, [course, setCourses]);
   const [showCourseNav, setShowCourseNav] = useState(true);
   const { currentUser } = useAccountContext();
   const router = useRouter();
