@@ -1,6 +1,5 @@
 "use client";
 import { create } from "zustand";
-import assignmentsJson from "../database/assignments.json";
 export type Assignment = {
   _id: string;
   title: string;
@@ -19,24 +18,22 @@ export const emptyAssignment: Omit<Assignment, "_id" | "course"> = {
   available: "",
   until: "",
 };
+// The store is now a cache of what the server sends back.
 type AssignmentsStore = {
   assignments: Assignment[];
-  addAssignment: (assignment: Omit<Assignment, "_id">) => void;
+  setAssignments: (assignments: Assignment[]) => void;
+  addAssignment: (assignment: Assignment) => void;
   deleteAssignment: (assignmentId: string) => void;
   updateAssignment: (assignment: Assignment) => void;
   findAssignment: (assignmentId: string) => Assignment | undefined;
 };
 export const useAssignmentsStore = create<AssignmentsStore>((set, get) => ({
-  assignments: assignmentsJson as Assignment[],
+  assignments: [],
+  setAssignments: (assignments) => set({ assignments }),
   findAssignment: (assignmentId) =>
     get().assignments.find((a) => a._id === assignmentId),
   addAssignment: (assignment) =>
-    set((state) => ({
-      assignments: [
-        ...state.assignments,
-        { ...assignment, _id: crypto.randomUUID() },
-      ],
-    })),
+    set((state) => ({ assignments: [...state.assignments, assignment] })),
   deleteAssignment: (assignmentId) =>
     set((state) => ({
       assignments: state.assignments.filter((a) => a._id !== assignmentId),

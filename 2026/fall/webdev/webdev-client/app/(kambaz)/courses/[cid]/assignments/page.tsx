@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { FaPlus, FaSearch } from "react-icons/fa";
@@ -8,6 +9,7 @@ import {
   type Assignment,
 } from "../../../store/assignmentsStore";
 import { useAccountContext } from "../../../account/AccountContext";
+import * as client from "../../client";
 
 function assignmentDetails(a: Assignment) {
   const parts = ["Multiple Modules"];
@@ -20,16 +22,23 @@ function assignmentDetails(a: Assignment) {
 export default function Assignments() {
   const { cid } = useParams();
   const courseId = typeof cid === "string" ? cid : "";
-  const assignments = useAssignmentsStore((state) => state.assignments).filter(
-    (assignment) => assignment.course === courseId,
-  );
+  const assignments = useAssignmentsStore((state) => state.assignments);
+  const setAssignments = useAssignmentsStore((state) => state.setAssignments);
+  // Load this course's assignments from the server
+  useEffect(() => {
+    if (courseId) {
+      client.findAssignmentsForCourse(courseId).then(setAssignments);
+    }
+  }, [courseId, setAssignments]);
   const deleteAssignment = useAssignmentsStore(
     (state) => state.deleteAssignment,
   );
   const { currentUser } = useAccountContext();
   const isFaculty = currentUser?.role === "FACULTY";
-  const confirmDelete = (aid: string) => {
+  // Delete on the server, then remove from the store
+  const confirmDelete = async (aid: string) => {
     if (window.confirm("Are you sure you want to remove this assignment?")) {
+      await client.deleteAssignment(aid);
       deleteAssignment(aid);
     }
   };

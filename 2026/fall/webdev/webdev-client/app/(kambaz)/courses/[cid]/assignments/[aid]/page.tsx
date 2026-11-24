@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import {
@@ -8,6 +8,7 @@ import {
   type Assignment,
 } from "../../../../store/assignmentsStore";
 import { useAccountContext } from "../../../../account/AccountContext";
+import * as client from "../../../client";
 
 const fieldClass =
   "w-full rounded border border-neutral-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:bg-neutral-100";
@@ -31,12 +32,24 @@ export default function AssignmentEditor() {
   const [assignment, setAssignment] = useState<Omit<Assignment, "_id">>(
     () => existing ?? { ...emptyAssignment, course: cid },
   );
+  const setAssignments = useAssignmentsStore((state) => state.setAssignments);
+  useEffect(() => {
+    if (!found && cid) {
+      client.findAssignmentsForCourse(cid).then(setAssignments);
+    }
+  }, [found, cid, setAssignments]);
+  useEffect(() => {
+    if (existing) setAssignment(existing);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [existing?._id]);
   const listUrl = `/courses/${cid}/assignments`;
-  const save = () => {
+  const save = async () => {
     if (isNew) {
-      addAssignment(assignment);
+      const newAssignment = await client.createAssignmentForCourse(cid, assignment);
+      addAssignment(newAssignment);
     } else {
-      updateAssignment({ ...assignment, _id: existing._id });
+      const saved = await client.updateAssignment({ ...assignment, _id: existing._id });
+      updateAssignment(saved);
     }
     router.push(listUrl);
   };
