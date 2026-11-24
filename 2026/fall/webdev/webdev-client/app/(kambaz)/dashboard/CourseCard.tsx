@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useCoursesStore, type Course } from "../store/coursesStore";
+import * as client from "../courses/client";
 
 export default function CourseCard({
   course,
@@ -55,8 +56,9 @@ export default function CourseCard({
             type="button"
             id="wd-delete-course-click"
             className="ms-2 inline-flex items-center justify-center rounded bg-red-600 px-3 py-1.5 text-sm font-medium text-white"
-            onClick={(event) => {
+            onClick={async (event) => {
               event.preventDefault();
+              await client.deleteCourse(course._id);
               deleteCourse(course._id);
             }}
           >
