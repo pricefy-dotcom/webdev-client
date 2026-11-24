@@ -6,6 +6,8 @@ import WorkingWithRemoteArrays from "./WorkingWithRemoteArrays";
 import HttpClient from "./HttpClient";
 import WorkingWithRemoteArraysAsync from "./WorkingWithRemoteArraysAsync";
 import WorkingWithRemoteObjectsAsync from "./WorkingWithRemoteObjectsAsync";
+import HelloRoute from "./HelloRoute";
+import CalculatorNextWebApiClient from "./Calculator";
 
 export default function Lab5() {
     return (
@@ -19,6 +21,8 @@ export default function Lab5() {
             <HttpClient />
             <WorkingWithRemoteArraysAsync />
             <WorkingWithRemoteObjectsAsync />
+            <HelloRoute />
+            <CalculatorNextWebApiClient />
 
         </div>
     );
