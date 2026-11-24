@@ -12,6 +12,9 @@ const LINKS = [
   { href: "/labs/lab5", id: "wd-lab5-link", label: "Lab 5", match: (p: string) => p.includes("/lab5") },
   { href: "/", id: "wd-kambaz-link", label: "Kambaz", match: () => false },
   { href: "https://kambaz.dev/book/ch3", id: "wd-book-ch3-link", label: "Book Ch3", match: () => false },
+  { href: "https://github.com/pricefy-dotcom/webdev-client", id: "wd-github", label: "GitHub (Next.js)", match: () => false }, // NEW
+  { href: "https://github.com/pricefy-dotcom/webdev-server", id: "wd-github-node-server-repo", label: "GitHub (Node server)", match: () => false }, // NEW
+  { href: "https://kambaz-server-tprice.onrender.com", id: "wd-render-root-url", label: "Render server", match: () => false }, // NEW
 ] as const;
 
 const activeStyle = {
