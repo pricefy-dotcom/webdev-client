@@ -2,11 +2,25 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useParams } from "next/navigation";
 import { useModulesStore } from "../../../store/modulesStore";
+import * as client from "../../client";
 export default function ModuleEditor() {
   const { cid } = useParams();
   const [show, setShow] = useState(false);
   const [moduleName, setModuleName] = useState("");
   const addModule = useModulesStore((state) => state.addModule);
+  // 5.4.6.2: create on the server, then add the server's module to the store
+  const onAddModule = async () => {
+    if (moduleName.trim() !== "") {
+      const newModule = await client.createModuleForCourse(String(cid), {
+        name: moduleName,
+        description: "",
+        lessons: [],
+      });
+      addModule(newModule);
+    }
+    setModuleName("");
+    setShow(false);
+  };
   return (
     <>
       <button
@@ -54,13 +68,7 @@ export default function ModuleEditor() {
               </button>
               <button
                 type="button"
-                onClick={() => {
-                  if (moduleName.trim() !== "") {
-                    addModule({ name: moduleName, course: String(cid) });
-                  }
-                  setModuleName("");
-                  setShow(false);
-                }}
+                onClick={onAddModule}
                 className="rounded bg-red-600 px-3 py-1.5 text-sm font-medium text-white"
                 id="wd-add-module-submit"
               >
