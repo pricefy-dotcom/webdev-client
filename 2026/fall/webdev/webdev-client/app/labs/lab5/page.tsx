@@ -2,6 +2,10 @@ import Environment from "./Environment";
 import PathParameters from "./PathParamaters";
 import QueryParameters from "./QueryParameters";
 import WorkingWithRemoteObjects from "./WorkingWithRemoteObjects";
+import WorkingWithRemoteArrays from "./WorkingWithRemoteArrays";
+import HttpClient from "./HttpClient";
+import WorkingWithRemoteArraysAsync from "./WorkingWithRemoteArraysAsync";
+import WorkingWithRemoteObjectsAsync from "./WorkingWithRemoteObjectsAsync";
 
 export default function Lab5() {
     return (
@@ -11,6 +15,10 @@ export default function Lab5() {
             <PathParameters />
             <QueryParameters />
             <WorkingWithRemoteObjects />
+            <WorkingWithRemoteArrays />
+            <HttpClient />
+            <WorkingWithRemoteArraysAsync />
+            <WorkingWithRemoteObjectsAsync />
 
         </div>
     );
