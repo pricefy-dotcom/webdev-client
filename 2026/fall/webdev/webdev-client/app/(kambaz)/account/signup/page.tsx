@@ -2,32 +2,43 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import * as client from "../client";
 import { useAccountContext } from "../AccountContext";
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const { setCurrentUser } = useAccountContext();
   const router = useRouter();
-  const signup = () => {
+  const signup = async () => {
     if (!username || !password) return;
-    setCurrentUser({
-      _id: crypto.randomUUID(),
-      username,
-      password,
-      firstName: "",
-      lastName: "",
-      email: "",
-      role: "STUDENT",
-      loginId: "",
-      section: "",
-      lastActivity: "",
-      totalActivity: "",
-    });
-    router.push("/account/profile");
+    try {
+      const currentUser = await client.signup({
+        username,
+        password,
+        firstName: "",
+        lastName: "",
+        email: "",
+        role: "STUDENT",
+        loginId: "",
+        section: "",
+        lastActivity: "",
+        totalActivity: "",
+      });
+      setCurrentUser(currentUser);
+      router.push("/account/profile");
+    } catch (e: any) {
+      setError(e?.response?.data?.message ?? "Unable to sign up");
+    }
   };
   return (
     <div id="wd-signup-screen" className="max-w-sm">
       <h3 className="mb-3 text-2xl font-semibold">Sign up</h3>
+      {error && (
+        <p id="wd-signup-error" className="mb-2 rounded bg-red-100 px-3 py-2 text-red-800">
+          {error}
+        </p>
+      )}
       <input
         id="wd-username"
         placeholder="username"
