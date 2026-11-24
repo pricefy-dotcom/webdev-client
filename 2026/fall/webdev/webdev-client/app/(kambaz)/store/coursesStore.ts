@@ -25,12 +25,7 @@ export const useCoursesStore = create<CoursesStore>((set) => ({
   courses: [],
   setCourses: (courses) => set({ courses }),
   addCourse: (course) =>
-    set((state) => ({
-      courses: [
-        ...state.courses,
-        { ...emptyCourse, ...course, _id: crypto.randomUUID() },
-      ],
-    })),
+    set((state) => ({ courses: [...state.courses, course] })),
   deleteCourse: (courseId) =>
     set((state) => ({
       courses: state.courses.filter((course) => course._id !== courseId),

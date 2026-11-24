@@ -42,6 +42,15 @@ export default function Dashboard() {
     loadCourses();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser, showAllCourses]);
+  const onAddCourse = async () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { _id, ...newCourseFields } = course;
+    const newCourse = await client.createCourse(newCourseFields);
+    addCourse(newCourse);
+    if (currentUser) {
+      enroll(currentUser._id, newCourse._id);
+    }
+  };
 
   return (
     <div id="wd-dashboard">
@@ -64,7 +73,7 @@ export default function Dashboard() {
             type="button"
             className="rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white"
             id="wd-add-new-course-click"
-            onClick={() => addCourse(course)}
+            onClick={onAddCourse}
           >
             Add
           </button>
